@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Configures /etc/hosts so localhost resolves to 127.0.0.2 and facebook.com resolves to 8.8.8.8
+
+cp /etc/hosts /tmp/hosts_temp
+
+# Edit localhost
+awk '{if($0 ~ /127\.0\.0\.1.*localhost/) print "127.0.0.2\tlocalhost"; else print $0}' /tmp/hosts_temp > /tmp/hosts_new
+
+# Add facebook.com if not exists
+if ! grep -q "facebook\.com" /tmp/hosts_new; then
+    echo "8.8.8.8	facebook.com" >> /tmp/hosts_new
+else
+    awk '{if($0 ~ /facebook\.com/) print "8.8.8.8\tfacebook.com"; else print $0}' /tmp/hosts_new > /tmp/hosts_new2
+    mv /tmp/hosts_new2 /tmp/hosts_new
+fi
+
+cp /tmp/hosts_new /etc/hosts
