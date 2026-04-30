@@ -51,11 +51,3 @@ The blog post provides a detailed explanation of the journey from typing "google
 ### Diagram
 
 The diagram visually represents the entire process, making it easier to understand the flow of information and the relationships between different components in the web stack.
-
-## Author
-
-- Teddy Deberdt
-
-## Additional Resources
-
-- [Technical Writing Tips and Tricks for students](https://intranet.hbtn.io/concepts/225)
